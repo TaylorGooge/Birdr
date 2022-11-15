@@ -1,0 +1,30 @@
+{{#extend "scripts"}}
+    <script src ="vendor/node_modules/js/swiper-bundle.min.js"></script>
+    <script src ="js/swiper.js"></script>
+    <script src = "js/reportbird.js" > </script>
+    <script src = "js/toGeoJson.js" > </script>
+    <script src = "js/filterSearch.js" > </script>
+    <script src = "js/slider.js" > </script>
+{{/extend}}
+{{#extend "stylesheets"}}
+    <!--Swiper slider-->
+    <link rel="stylesheet" href="vendor/node_modules/css/swiper-bundle.min.css">
+    <!--G-lightbox-->
+    <link rel="stylesheet" href="vendor/node_modules/css/glightbox.min.css" />
+{{/extend}}
+
+{{> preloader }}
+{{> navbar }}
+<main class="main-content" id="main-content">
+    <section class="position-relative overflow-hidden bg-light">
+        {{>tabbedMap}}
+    </section>
+    {{>googleMap}}
+</main>
+{{>modal}}
+{{> footer-3 }}
+{{>scroller}}
+
+        
+
+

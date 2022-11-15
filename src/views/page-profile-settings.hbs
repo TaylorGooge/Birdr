@@ -1,0 +1,147 @@
+{{#extend "scripts"}}
+    <script src="vendor/node_modules/js/flatpickr.min.js"></script>
+    <script src="vendor/node_modules/js/choices.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="js/profile-settings.js"></script>
+{{/extend}}
+{{#extend "stylesheets"}}
+<!--select style-->
+<link rel="stylesheet" href="vendor/node_modules/css/choices.min.css">
+
+<!--Flatpickr-->
+<link rel="stylesheet" href="vendor/node_modules/css/flatpickr.min.css">
+
+<!--File uploader-->
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+<link href="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css"
+    rel="stylesheet">
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+    rel="stylesheet">
+
+{{/extend}}
+{{>preloader}}
+{{> navbar }}
+
+        <main class="main-content" id="main-content">
+            <section class="position-relative bg-white border-bottom">
+                <div class="container position-relative py-9">
+                    <div class="row">
+                        <div class="col-md-6 mx-auto">
+                            {{>profilebreadcrumb}}
+                        </div>
+                    </div>
+                    <!--/.row-->
+
+                </div>
+            </section>
+            <section class="position-relative">
+                <div class="container position-relative">
+                    <div class="overflow-hidden">
+                        <!--Profile info header-->
+                        <div class="position-relative pt-5 pb-9 pb-lg-11">
+                            <div class="row">
+                                <div class="col-lg-9 mx-auto">
+                                    <div class="pt-5 d-flex flex-column h-100">
+                                        {{>profilemenu}}
+
+                                        <div class="card shadow p-3 mb-3">
+                                            <h5 class="mb-4">Edit profile</h5>
+
+                                            <form autocomplete="false">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-4">
+                                                                <input type="file" class="width-15x height-15x" id="update_profile"
+                                                                    accept="image/png, image/jpeg, image/gif">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="form-label" for="profile_name">First Name</label>
+                                                        <input class="form-control" id="profile_name" type="text"
+                                                            value="{{userNav.givenName}}">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="form-label" for="profile_email">Last Name</label>
+                                                        <input class="form-control" id="profile_name" type="text"
+                                                            value="{{userNav.familyName}}">
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <button type="button" class="btn btn-primary" id="profileSaveBtn">Save changes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <!--Password card-->
+                                        <div class="card shadow p-3">
+                                            <h5 class="mb-4">Update password</h5>
+
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="update_pass_current" class="form-label">Current
+                                                            password</label>
+                                                        <input id="update_pass_current" type="password" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="update_pass_new" class="form-label">New
+                                                            password</label>
+                                                        <input type="password" class="form-control"
+                                                            id="update_pass_new">
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="update_pass_new_confirm" class="form-label">Confirm
+                                                            new password</label>
+                                                        <input type="password" class="form-control"
+                                                            id="update_pass_new_confirm">
+                                                    </div>
+                                                </div>
+                                                <small class="help-text text-muted">Password must be at least 8 character and
+                                                    contain symbols</small>
+                                                <div class="text-end">
+                                                    <button id="passwordUpdateBtn" type="button" class="btn btn-primary">Save updated
+                                                        password</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </main>
+
+{{> footer-3}}
+{{>scroller}}
+
+        
+
+
+        <!--Profile save changes taost notification-->
+        <div class="position-fixed top-50 start-50 translate-middle p-3" style="z-index: 11">
+            <div id="profileSaveToast" class="toast my-2 bg-success text-white p-3 border-0" data-bs-auto-close="true" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true">
+             
+              <div class="toast-body d-flex align-items-center">
+                  <i class="fs-3 bx bx-user-circle me-3"></i>
+                <div class="fs-4">
+                    Profile saved
+                </div>
+              </div>
+            </div>
+          
+              <!--Password changes taost notification-->
+         <div id="passwordUpdateToast" class="toast my-2 bg-success text-white p-3 border-0" data-bs-auto-close="true" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true">
+             
+              <div class="toast-body d-flex align-items-center">
+                  <i class="fs-3 bx bx-lock me-3"></i>
+                <div class="fs-4">
+                   Password Updated
+                </div>
+              </div>
+            </div>
+            </div>

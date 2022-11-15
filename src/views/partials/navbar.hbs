@@ -1,0 +1,62 @@
+ <header class="z-index-fixed">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid position-relative">
+            <a class="navbar-brand" href="/">
+                <img src="img/logo/logo.svg" alt="" class="img-fluid">
+            </a>
+            <div class="d-flex align-items-center navbar-no-collapse-items order-lg-last">
+                <button class="navbar-toggler order-last" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbarTheme" aria-controls="mainNavbarTheme" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i></i>
+                    </span>
+                </button>
+                {{#if userNav.user}}
+                    <div class="nav-item me-3 me-lg-0 dropdown">
+                        <a href="#" class="btn btn-secondary rounded-pill py-0 ps-0 pe-3"
+                            data-bs-auto-close="outside" data-bs-toggle="dropdown">
+                            <img src="{{userNav.picture}}" alt="" class="avatar sm rounded-circle me-1">
+                            <small>{{userNav.givenName}}</small>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs p-0">
+                            <a href="/profile" class="dropdown-header border-bottom p-4">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <img src="{{userNav.picture}}" alt=""
+                                            class="avatar xl rounded-pill me-3">
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">{{userNav.givenName}} {{userNav.familyName}}</h5>
+                                        <span class="text-muted d-block mb-2">{{userNav.email}}</span>
+                                        <div class="small d-inline-block link-underline fw-semibold text-muted">View
+                                            account</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item p-3">
+                                <span class="d-block text-end">
+                                    <i class="bx bx-box-arrow-right"></i>
+                                    Sign Out
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="collapse navbar-collapse" id="mainNavbarTheme">
+                {{> default-navbar-items }}
+            </div>
+        </div>
+    </nav>
+</header>
+<script>
+    {{#if userEmail}}
+        let email = "{{userEmail}}"
+        {{else}}
+        let email = "{{userNav.email}}"
+    {{/if}}
+    {{#if userNav.userName}}
+      let userName = "{{userNav.userName}}"
+  {{/if}}
+</script>

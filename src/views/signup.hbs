@@ -1,0 +1,87 @@
+{{#extend "scripts"}}
+{{/extend}}
+{{#extend "stylesheets"}}
+{{/extend}}
+{{>preloader}}
+{{>navbar}}
+
+<main>
+    <!--page-hero-->
+    <section class="bg-white position-relative">
+        <div class="bg-pattern text-light w-100 h-100 start-0 top-0 position-absolute"></div>
+        <div class="bg-gradientwhite flip-y w-50 h-100 start-50 top-0 translate-middle-x position-absolute"></div>
+        <div class="container pt-11 pt-lg-14 pb-9 pb-lg-11 position-relative z-index-1">
+            <div class="row align-items-center justify-content-center">
+                <div class=" col-xl-4 col-lg-5 col-md-6 col-sm-8 z-index-2">
+
+                    <h2 class="mb-1 display-6">
+                        Hello!
+                    </h2>
+                    <p class="mb-4 text-muted">
+                        To get started, please create an account...
+                    </p>
+                    <div class="position-relative">
+                        <div>
+                            <form class="needs-validation" novalidate>
+
+                                <!--input-with-icon-->
+                                <div class="input-icon-group mb-3">
+                                    <span class="input-icon">
+                                        <i class="bx bx-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control" required id="signUpNameFirst" autofocus
+                                        placeholder="Your first name">
+                                    <input type="text" class="form-control" required id="signUpNameLast" autofocus
+                                placeholder="Your last name">
+                                </div>
+
+                                <!--input-with-icon-->
+                                <div class="input-icon-group mb-3">
+                                    <span class="input-icon">
+                                        <i class="bx bx-envelope"></i>
+                                    </span>
+                                    </span>
+                                    <input type="email" class="form-control" required id="signUpMail"
+                                        placeholder="Your email address">
+                                </div>
+                                <!--input-with-icon-->
+                                <div class="input-icon-group mb-3">
+                                    <span class="input-icon">
+                                        <i class="bx bx-lock-open"></i>
+                                    </span>
+                                    </span>
+                                    <input type="password" class="form-control" required id="signUpPassword"
+                                        placeholder="Enter password">
+                                </div>
+                                <!--input-with-icon-->
+                                <div class="input-icon-group mb-3">
+                                    <span class="input-icon">
+                                        <i class="bx bx-lock-open"></i>
+                                    </span>
+                                    </span>
+                                    <input type="password" class="form-control" required id="signUpConfirmPassword"
+                                        placeholder="Confirm password">
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!---->
+                            <p class="pt-3 small text-muted">
+                                Already have an account? <a href="/signin"
+                                    class="ms-2 text-dark fw-semibold link-decoration">Sign in</a>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{{>footer-3}}
+{{>scroller}}
+

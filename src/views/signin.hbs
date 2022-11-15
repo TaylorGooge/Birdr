@@ -1,0 +1,67 @@
+{{#extend "scripts"}}
+{{/extend}}
+{{#extend "stylesheets"}}
+{{/extend}}
+{{>preloader}}
+{{>navbar}}
+
+
+<main>
+    <!--page-hero-->
+    <section class="bg-white position-relative">
+        <div class="bg-pattern text-light w-100 h-100 start-0 top-0 position-absolute"></div>
+        <div class="container pt-11 pt-lg-14 pb-9 pb-lg-11 position-relative z-index-1">
+            <div class="row align-items-center justify-content-center">
+                <div class=" col-xl-4 col-lg-5 col-md-6 col-sm-8 z-index-2">
+                    
+                    <h2 class="mb-1 display-6">
+                        Welcome back!
+                        </h2>
+                        <p class="mb-4 text-muted">
+                            Please Sign In
+                        </p>
+                    <div class="position-relative">
+                        <div>
+                            <form class="needs-validation" novalidate>
+                                <div class="input-icon-group mb-3">
+                                    <span class="input-icon">
+                                    <i class="bx bx-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control" required autofocus placeholder="Username">
+                            </div>
+                                <div class="input-icon-group mb-3">
+                                <span class="input-icon">
+                                    <i class="bx bx-lock-open"></i>
+                                </span>
+                                <input type="password" class="form-control" required placeholder="Password">
+                            </div>
+                                <div class="mb-3 d-flex justify-content-between">
+                                    <div class="form-check">
+                                        
+                                        </div>
+                                        <div>
+                                        <label class="text-end d-block small mb-0"><a href="/resetpassword" class="text-muted link-decoration">Forget Password?</a></label>
+                                        </div>
+                                </div>
+                                
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit">
+                                        Sign in
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!---->
+                            <p class="pt-4 small text-muted">
+                                Don’t have an account yet? <a href="/signup" class="ms-2 text-dark fw-semibold link-underline">Sign Up</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{{>footer-3}}
+{{>scroller}}

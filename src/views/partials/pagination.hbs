@@ -1,0 +1,16 @@
+<nav aria-label="Page navigation" class="d-flex justify-content-end" data-aos="fade-up">
+     <ul class="pagination">
+        {{#each pagination}}    
+            {{#each this }}
+                {{!-- do not move max and curr pages --}}
+                {{var "maxPage" this.pageCount}}
+                {{var "currPage" this.page }}
+                <li class="page-item {{#ifEquals currPage 1 }} disabled {{/ifEquals}}"><a class="page-link" href="{{#ifEquals currPage 1}}/blog{{else}} /blog/{{dec currPage}} {{/ifEquals}}">Previous</a></li>      
+                {{#repeat maxPage start=1}}
+                    {{> paginationLine i= @index current= currPage max= maxPage }}
+               {{/repeat}}
+               <li class="page-item {{#ifEquals this.page maxPage }}disabled {{/ifEquals}}"><a class="page-link" href="/blog/{{inc currPage}}">Next</a></li>
+            {{/each}}
+        {{/each}}
+     </ul>   
+</nav>

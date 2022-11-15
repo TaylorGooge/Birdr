@@ -1,0 +1,31 @@
+ <nav class="d-md-flex justify-content-center" aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+            <a href="/">Home</a>
+        </li>
+        {{#if active.profile}}
+            <li class="breadcrumb-item active">
+                Profile
+            </li>
+        {{/if}}
+        {{#if active.settings}}
+            <li class="breadcrumb-item active">
+                Profile
+            </li>
+            <li class="breadcrumb-item active">
+                Settings
+            </li>
+        {{/if}}
+        {{#if active.tracking}}
+            <li class="breadcrumb-item active">
+                Profile
+            </li>
+            <li class="breadcrumb-item active">
+                Settings
+            </li>
+            <li class="breadcrumb-item active">
+                Tracking
+            </li>
+        {{/if}}
+    </ol>
+</nav>

@@ -1,0 +1,113 @@
+<!-- hidden modal buttons -->
+<a href="#successModal" id = 'successButton' data-bs-toggle="modal" aria-expanded="false" class="invisible"></a>
+<a href="#errorBirdModal" id="errorButton" data-bs-toggle="modal" aria-expanded="false" class="invisible"></a>
+<!--Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModal" aria-hidden="true" data-backdrop= 'static' >
+    <div class="modal-dialog">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0 bg-light">
+                <h5 class="modal-title">Success</h5>
+                <!--Close button-->
+                <button type="button"
+                    class="btn btn-outline-secondary p-0 border-2 width-3x height-3x rounded-circle flex-center z-index-1"
+                    data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bx bx-x fs-5"></i>
+                </button>
+            </div>
+            <div class="modal-body py-5 border-0">
+                <p>
+                    You have successfuly reported a sighting
+                </p>
+               
+            </div>
+            <div class="modal-footer bg-light border-0">
+                <button type="button" class="btn btn-gray-200 btn-sm"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0 bg-light">
+                <h5 class="modal-title">Uh oh!</h5>
+                <!--Close button-->
+                <button type="button"
+                    class="btn btn-outline-secondary p-0 border-2 width-3x height-3x rounded-circle flex-center z-index-1"
+                    data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bx bx-x fs-5"></i>
+                </button>
+            </div>
+            <div class="modal-body py-5 border-0">
+                    <p>There was a problem completing your request. Please try again later or 
+                        <a href="mailto:supportBirdApp@proton.me"> contact us </a> to report this problem.
+                    </p>
+
+            </div>
+            <div class="modal-footer bg-light border-0">
+                <button type="button" class="btn btn-gray-200 btn-sm"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Missing Bird Modal -->
+<div class="modal fade" id="reportBirdModal" tabindex="-1" aria-labelledby="reportBirdModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content border-0">
+            <div class="position-relative border-0 pe-4">
+                <button type="button"
+                    class="btn btn-outline-secondary p-0 border-2 width-3x height-3x rounded-circle flex-center position-absolute end-0 top-0 mt-3 me-3 z-index-1"
+                    data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bx bx-x fs-5"></i>
+                </button>
+            </div>
+            <div class="modal-body py-5 border-0">
+                <div class="px-3">
+
+                    <h2 class="mb-1 display-6">
+                        Think we're missing something?
+                    </h2>
+                    <p class="mb-4 text-muted">
+                        Suggest a new bird
+                    </p>
+                    <div class="position-relative">
+                        <div>
+                            <form  action="https://formspree.io/f/mleazwnd" method="POST" class="needs-validation" novalidate>
+                                <div class="input-icon-group mb-3">
+                                    <input type="text" class="form-control" autofocus=""
+                                        placeholder="English Name" name= "English Name" required>
+                                </div>
+                                <div class="input-icon-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Scientific Name" name= "Scientific Name">
+                                </div>
+                                <h6 class="mb-0 me-3 me-md-4"><strong class="text-decoration-underline text-primary" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" title="Bird codes, also known as banding codes or alpha codes, are abbreviations for bird names used by bird banders, ornithologists, and birdwatchers in North and Central America. The codes are written in capital letters, and look like, e.g., MODO for mourning dove.
+
+The first set contains four-letter codes based on English names while the second set contains six-letter codes based on the scientific names.">What are these codes ?</strong></h6>
+                                <div class="input-icon-group mb-3">
+                                    <input type="text" class="form-control" placeholder="4 Letter Code" name = "4code">
+                                </div>
+                                <div class="input-icon-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Six Letter Code" name="6code">
+                                </div>
+
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

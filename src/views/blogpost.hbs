@@ -1,0 +1,109 @@
+
+{{#extend "scripts"}}
+{{/extend}}
+{{#extend "stylesheets"}}
+{{/extend}}
+{{>preloader}}
+{{>navbar}}
+{{#each blog}}
+<main>
+    <section id="article-header" class="position-relative bg-gradient-light">
+        <div class="container pt-14 pb-9 pb-lg-11 position-relative">
+            <article class="row pt-lg-7 pb-11">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="position-relative pb-3 pb-lg-0">
+                        <div class="d-flex align-items-center w-100">
+                            <a href="#!" class="badge bg-primary rounded-pill me-3">{{this.attributes.tag}}</a>
+                            <small class="text-muted">{{formatDate this.attributes.publishDate}}</small>
+                        </div>
+                        <div>
+                            <h2 class="my-4 display-3">
+                                {{this.attributes.articleTitle}}
+                            </h2>
+                            {{#each this.attributes.admin_user}}
+                            {{#if this.attributes.firstname}}
+                            <div class="d-flex pt-2 mb-0 small align-items-center">
+                                {{!-- <img src="" alt="" class="width-3x height-3x rounded-circle me-2"> --}}
+                                <span class="text-muted d-inline-block">By <a href="#!"
+                                        class="text-dark">{{this.attributes.firstname}} {{this.attributes.lastname}}</a></span>
+                            </div>
+                            {{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+            <!--/.article-->
+        </div>
+        <!--Divider-->
+        <svg class="position-absolute start-0 bottom-0 text-white" preserveAspectRatio="none" width="100%"
+            height="120" viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M800 240H0L800 0V240Z" fill="currentColor" />
+        </svg>
+    </section>
+    <!--/.Article header-end-->
+    <section class="position-relative bg-white border-bottom">
+        <div class="container pb-9 pb-lg-11">
+            {{#each this.attributes.mainPhoto.data}}
+            <img src="http://localhost:1337{{this.attributes.url}}" alt=""class="img-fluid shadow-lg rounded-4 mb-7 mb-lg-9 position-relative mt-n14">
+            http://localhost:1337{{this.attributes.url}}
+            {{/each}}
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <article class="article mb-9" id="mainContent">
+                        {{{this.attributes.postBody }}}
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{> blogsignup}}
+</main>
+{{/each}}
+{{>footer-3}}
+{{>scroller}}
+<script>
+
+    function addClass(selector, className){
+    selector.forEach((el) => {
+        if (className.length > 1) {
+            for (let i=0; i < className.length; i++){
+                el.classList.add(className[i])
+
+            }
+        } else {
+            el.classList.add(className);
+        }
+    });
+
+    }
+   addEventListener('load', (event) => {
+    let post = document.getElementById('mainContent')
+
+    let firstP= post.querySelectorAll('p:nth-child(1)')
+    firstP[0].classList.add("lead", "mb-4", "dropcap")
+    
+    let allP= post.querySelectorAll('p')
+    addClass(allP, "mb-5");
+    
+
+    let h2= post.querySelectorAll('h2')
+    addClass(h2, ['mb-4', 'display-4', 'fw-semibold']);
+
+    let blockQuote = post.querySelectorAll('blockqoute')
+    addClass(blockQuote, ['blockquote', 'rounded-4', 'rounded-0', 'px-4', 'px-lg-6', 'py-6', 'py-lg-8', 'bg-white', 'shadow-lg', 'border-success', 'border-start', 'border-3', 'my-7', 'my-lg-9'])
+
+    let h4= post.querySelectorAll('h4')
+    addClass(h4, 'mb-4')
+
+    let img= post.querySelectorAll('img')
+    addClass(img, ['img-fluid', 'rounded-4 mb-3'])
+
+    let h1= post.querySelectorAll('h1')
+    addClass(h1, "mb-4")
+
+    let h3= post.querySelectorAll('h3')
+    addClass(h3, 'mb-4')
+   });
+</script>

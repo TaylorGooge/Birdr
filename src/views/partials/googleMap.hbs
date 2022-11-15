@@ -1,0 +1,98 @@
+<script>
+    var geoData = {{{data}}};
+</script>
+
+<div id="map" style="height:500px ;" class= 'd-flex justify-content-center'>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9nbhtbGeolVY2g-PckOOSnfe3Fabea0w&v=weekly&channel=2"></script>
+</div>
+
+
+<script>
+    let markers = [];
+    let lastLoc = null
+    let windowOpen = false;
+    let showCenter = true
+    const im = 'locationmarker.png'
+    function initMap(geoData) {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 41.850033, lng: -87.6500523},
+            zoom: 17,
+            gestureHandling: "cooperative",
+        });
+        map.data.addGeoJson(geoData);
+        map.data.setStyle({
+            strokeColor: 'blue'});
+        //set current position
+        Locate()
+        //info windows
+        const infoWindow = new google.maps.InfoWindow();
+        const locationButton = document.createElement('button');
+        locationButton.textContent = 'Pan to Current Location';
+        locationButton.classList.add('custom-map-control-button');
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+        map.data.addListener('click', function(event) {
+            const feat = event.feature;
+            const html = `<div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"> <bold>Species: </bold>${feat.getProperty('englishName')}</li>
+                                <li class="list-group-item"><bold>Date: </bold>${feat.getProperty('date').slice(0,10)}</li>
+                                <li class="list-group-item"><bold>Logged By: </bold>${feat.getProperty('userName')}</li>
+                            </ul>
+                        </div>`
+            infoWindow.setContent(html);
+            infoWindow.setPosition(event.latLng);
+            infoWindow.setOptions({pixelOffset: new google.maps.Size(0, -34)});
+            infoWindow.open(map);
+            windowOpen = true;
+        });
+        map.addListener('dragend', ()=>{
+            showCenter= false
+        })
+        
+        infoWindow.addListener('closeclick', ()=>{
+            infoWindow.close(map);
+            windowOpen = false
+        });
+        // pan to location button
+        locationButton.addEventListener('click', () => {
+            showCenter= true
+            Locate();
+        });
+    }; 
+    initMap(geoData);
+    function setMapOnAll(map) {
+        for (let i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    }
+    function hideMarkers() {
+        setMapOnAll(null);
+    }
+    function deleteMarkers() {
+        hideMarkers();
+        markers = [];
+    }
+    function addMarker(position) {
+        var im = 'https://birdr-app.s3.amazonaws.com/public/locationmarker.png'
+        const marker = new google.maps.Marker({
+            position,
+            map,
+            icon: im,
+        });
+        markers.push(marker);
+    }
+     function Locate(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                deleteMarkers();
+                let currLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+                addMarker(currLoc);
+                if (!windowOpen && showCenter){
+                    map.setCenter(currLoc)
+                } 
+                lastLoc = currLoc
+            });
+        }
+    }
+    setInterval(Locate, 10000);
+</script>

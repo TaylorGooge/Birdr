@@ -1,0 +1,67 @@
+{{#if blog}}
+    <section class="position-relative overflow-hidden">
+        <div class="container py-9 py-lg-11 position-relative z-index-1">
+            <div class="row position-relative mb-7 align-items-end">
+                <div class="col-12 col-lg-7 me-auto mb-4 mb-lg-0" data-aos="fade-up">
+                    <!--Title-->
+                    <div class="position-relative">
+                        <!--Subtitle-->
+                        <div class="d-flex align-items-center mb-3" data-aos="fade-up">
+                            <div class="border-top border-warning width-3x border-2"></div>
+                            <h6 class="mb-0 ms-3 text-muted">Newsroom</h6>
+                        </div>
+                        <h2 class="display-5 mb-0">
+                            News and Announcements
+                        </h2>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 text-lg-end" data-aos="fade-down" data-aos-delay="100">
+                    <!--Action button-->
+                    <a href="/blog"
+                        class="btn flex-center hover-lift btn-outline-secondary p-0 width-10x height-10x btn-rise rounded-pill">
+                        <div class="btn-rise-bg bg-secondary"></div>
+                        <div class="btn-rise-text">
+                            <span class="small">Our blog</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="position-relative">
+                <div class="row position-relative z-index-1">
+                    {{#each blog}}
+                        {{#each this}}
+                            <div class="col-lg-4 mb-7 mb-lg-0" data-aos="fade-up">
+                                <!--Article-->
+                                <article class="card-hover hover-lift">
+                                    <!--Article Image-->
+                                    {{#each this.attributes.mainPhoto.data}}
+                                    <div class="position-relative rounded-5 overflow-hidden">
+                                        <img src="http://localhost:1337{{this.attributes.url}}" class="img-fluid img-zoom" alt="">
+                                    </div>
+                                    {{/each}}
+                                    <!--Article title-->
+                                    <div class="pt-4 px-4">
+                                        <h5 class="link-multiline">
+                                            {{this.attributes.articleTitle}}
+                                        </h5>
+                                        <p class="mb-0 pt-3 text-muted small">
+                                        {{formatDate this.attributes.publishDate}}
+                                        </p>
+                                    </div>
+
+                                    <!--Article link-->
+                                    <a href="\blogpost?id={{this.id}}" class="stretched-link"></a>
+                                </article>
+                            </div>
+                        {{/each}}
+                    {{/each}}
+          
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+{{/if}}

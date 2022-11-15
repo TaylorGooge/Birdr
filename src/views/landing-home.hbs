@@ -1,0 +1,324 @@
+{{#extend "scripts"}}
+    <script src="vendor/node_modules/js/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
+{{/extend}}
+{{#extend "stylesheets"}}
+    <!--Swiper slider-->
+    <link rel="stylesheet" href="vendor/node_modules/css/swiper-bundle.min.css">
+    <!--G-lightbox-->
+    <link rel="stylesheet" href="vendor/node_modules/css/glightbox.min.css" />
+{{/extend}}
+{{> preloader }}
+{{> navbar }}
+
+        <!--Main content-->
+
+        <main class="main-content" id="main-content">
+
+            <!--begin: Hero background slide section-->
+            <section class="position-relative">
+                <div class="container-fluid position-relative z-index-1">
+                    <div class="position-relative rounded-4 overflow-hidden bg-dark">
+                        <!-- Slider main container -->
+                        <div class="swiper-main rounded-4 overflow-hidden position-absolute start-0 top-0 w-100 h-100 mb-0">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper rounded-5">
+                                <!-- Slides -->
+                                <div class="swiper-slide bg-cover bg-center bg-no-repeat"
+                                    style="background-image: url(img/backgrounds/homeHero.png);"></div>
+                            </div>
+                        </div>
+                        <div class="position-relative text-white w-md-75 px-4 w-lg-60 mx-auto text-center z-index-1 py-12 py-lg-15">
+                            <!--Hero title-->
+                            <h1 class="display-1 mb-3 mb-md-4 position-relative">Your instinct is calling
+                            </h1>
+
+                            <!--Hero text-->
+                            <p class="lead w-lg-60 mx-auto mb-5">Birdr</p>
+
+                            <!--Hero buttons-->
+                            <div class="d-flex flex-column">
+                                <div>
+                                    <a href="#features" class="btn btn-primary btn-lg">
+                                        Get Started
+                                    </a>
+                                </div>
+                                <div class="pt-3 small">✌️ Get started for free.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                </div>
+
+
+            </section>
+            <!--end: Hero background slide section-->
+
+            <!--begin: features icon section-->
+            <section id="features" class="overflow-hidden position-relative">
+                <div class="py-9 py-lg-11 container">
+                    <div class="row mb-7 align-items-center">
+                        <div class="col-md-7 mb-5 mb-md-0">
+                            <!--Subtitle-->
+                            <div class="d-flex align-items-center mb-3" data-aos="fade-up">
+                                <div class="border-top border-warning width-3x border-2"></div>
+                                <h6 class="mb-0 ms-3 text-muted">Why choose us</h6>
+                            </div>
+
+                            <!--Title-->
+                            <h2 class="display-5 mb-0" data-aos="fade-up" data-aos-delay="100">
+                                Unlock the posibilities
+                            </h2>
+                        </div>
+                       <!--- <div class="col-md-4 offset-lg-1">
+                            <p class="mb-0" data-aos="fade-up" data-aos-delay="150">
+                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus
+                                magna, vel scelerisque nisl consectetur et.
+                            </p> -->
+                        </div>
+                    </div>
+                    <!--Feature row-->
+                    <div class="row">
+
+                        <!--Feature Column-->
+                        <div class="col-md-6 col-xl-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+
+                            <!--Card-->
+                            <div class="card p-4 rounded-4 rounded-top-end-0 rounded-bottom-start-0 hover-lift hover-shadow-xl">
+                                <!--Feature icon-->
+                                <div class="width-6x height-6x position-relative flex-center mb-4">
+                                    <svg class="position-absolute w-100 text-primary h-100 start-0 top-0"
+                                        preserveAspectRatio="none" width="101" height="101" viewBox="0 0 101 101"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M34.896 10.6995C50.8574 -4.17176 75.6287 -3.04345 90.2241 13.2197C104.82 29.4828 103.712 54.7223 87.7507 69.5936L66.0751 89.7887C50.1136 104.66 25.3424 103.532 10.747 87.2686C-3.84845 71.0054 -2.74106 45.766 13.2204 30.8947L34.896 10.6995Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                    <!--Icon-->
+                                    <i class="bx bxs-magic-wand position-relative text-white fs-2 lh-1"></i>
+                                </div>
+                                <!--Feature title-->
+                                <div class="mb-2">
+                                    <h5 class="mb-0">Bird from anywhere</h5>
+                                </div>
+
+                                <!--Feature description-->
+                                <p class="mb-0">
+                                    Other applications limit the locations you can bird from
+                                </p>
+                            </div>
+                        </div>
+
+                        <!--Feature Column-->
+                        <div class="col-md-6 col-xl-3 mb-4" data-aos="fade-up" data-aos-delay="150">
+                            <!--Card-->
+                            <div class="card p-4 rounded-4 rounded-top-end-0 rounded-bottom-start-0 hover-lift hover-shadow-xl">
+                                <!--Feature icon-->
+                                <div class="width-6x height-6x position-relative flex-center mb-4">
+                                    <svg class="position-absolute w-100 text-success h-100 start-0 top-0"
+                                        preserveAspectRatio="none" width="101" height="101" viewBox="0 0 101 101"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M34.896 10.6995C50.8574 -4.17176 75.6287 -3.04345 90.2241 13.2197C104.82 29.4828 103.712 54.7223 87.7507 69.5936L66.0751 89.7887C50.1136 104.66 25.3424 103.532 10.747 87.2686C-3.84845 71.0054 -2.74106 45.766 13.2204 30.8947L34.896 10.6995Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                    <!--Icon-->
+                                    <i class="bx bx-devices position-relative text-white fs-2 lh-1"></i>
+                                </div>
+                                <!--Feature title-->
+                                <div class="mb-2">
+                                    <h5 class="mb-0">Mobile friendly</h5>
+                                </div>
+
+                                <!--Feature description-->
+                                <p class="mb-0">
+                                    Birdr is optimized for mobile- so you can log on the go
+                                </p>
+                            </div>
+                        </div>
+
+                        <!--Feature Column-->
+                        <div class="col-md-6 col-xl-3 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="200">
+                            <!--Card-->
+                            <div class="card p-4 rounded-4 rounded-top-end-0 rounded-bottom-start-0 hover-lift hover-shadow-xl">
+                                <!--Feature icon-->
+                                <div class="width-6x height-6x position-relative flex-center mb-4">
+                                    <svg class="position-absolute w-100 text-danger h-100 start-0 top-0"
+                                        preserveAspectRatio="none" width="101" height="101" viewBox="0 0 101 101"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M34.896 10.6995C50.8574 -4.17176 75.6287 -3.04345 90.2241 13.2197C104.82 29.4828 103.712 54.7223 87.7507 69.5936L66.0751 89.7887C50.1136 104.66 25.3424 103.532 10.747 87.2686C-3.84845 71.0054 -2.74106 45.766 13.2204 30.8947L34.896 10.6995Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                    <!--Icon-->
+                                    <i class="bx bx-layer position-relative text-white fs-2 lh-1"></i>
+                                </div>
+                                <!--Feature title-->
+                                <div class="mb-2">
+                                    <h5 class="mb-0">Beginner and Casual Friendly</h5>
+                                </div>
+
+                                <!--Feature description-->
+                                <p class="mb-0">
+                                    Bird watchers of all skill levels will find it easy to use Birdr. No knowledge
+                                    of complicated observation protocols needed!
+                                </p>
+                            </div>
+                        </div>
+                        <!--
+                        <!--Feature Column-->
+                        <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="250">
+                            <!--Card-->
+                            <div class="card p-4 rounded-4 rounded-top-end-0 rounded-bottom-start-0 hover-lift hover-shadow-xl">
+                                <!--Feature icon-->
+                                <div class="width-6x height-6x position-relative flex-center mb-4">
+                                    <svg class="position-absolute w-100 text-warning h-100 start-0 top-0"
+                                        preserveAspectRatio="none" width="101" height="101" viewBox="0 0 101 101"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M34.896 10.6995C50.8574 -4.17176 75.6287 -3.04345 90.2241 13.2197C104.82 29.4828 103.712 54.7223 87.7507 69.5936L66.0751 89.7887C50.1136 104.66 25.3424 103.532 10.747 87.2686C-3.84845 71.0054 -2.74106 45.766 13.2204 30.8947L34.896 10.6995Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                    <!--Icon-->
+                                    <i class="bx bx-bulb position-relative text-white fs-2 lh-1"></i>
+                                </div>
+                                <!--Feature title-->
+                               <div class="mb-2">
+                                    <h5 class="mb-0">Collaborate with other birders</h5>
+                                </div>
+
+                                <!--Feature description-->
+                                <p class="mb-0">
+                                    Birdr makes it easy to to see what other birders in your area have recorded
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--end: features icon section-->
+
+
+            <!--begin:feature image section-->
+            <section class="position-relative overflow-hidden">
+
+                <!--Content container-->
+                <div class="container py-9 py-lg-11 position-relative">
+                    <div class="row align-items-center">
+
+                        <!--Get started column-->
+                        <div class="col-lg-6 col-xl-5 ps-lg-7 ps-5 pb-4 order-lg-last me-lg-auto mb-5 mb-lg-0 position-relative"
+                            data-aos="fade-down">
+                            <div
+                                class="bg-pattern text-warning position-absolute w-50 h-50 mb-lg-n4 mb-n2 start-0 bottom-0 rellax" data-rellax-speed="2" data-rellax-percentage=".5">
+                            </div>
+                            <div class="position-relative bg-white rounded-block rounded-bottom-start-0 rounded-top-end-0 shadow-lg overflow-hidden">
+                                <div class="position-relative bg-white overflow-hidden">
+                                    <!--Get started image divider shape-->
+                                    <svg class="position-absolute start-0 bottom-0 flip-y" width="100%" height="24"
+                                        preserveAspectRatio="none" viewBox="0 0 1284 100" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M0 0L31.03 14.5833C60.99 29.1667 121.98 58.3333 182.97 62.5C245.03 66.6667 306.02 45.8333 367.01 35.4167C428 25 488.99 25 549.98 37.5C610.97 50 673.03 75 734.02 70.8333C795.01 66.6667 856 33.3333 916.99 31.25C977.98 29.1667 1038.97 58.3333 1101.03 75C1162.02 91.6667 1223.01 95.8333 1252.97 97.9167L1284 100V0H1252.97C1223.01 0 1162.02 0 1101.03 0C1038.97 0 977.98 0 916.99 0C856 0 795.01 0 734.02 0C673.03 0 610.97 0 549.98 0C488.99 0 428 0 367.01 0C306.02 0 245.03 0 182.97 0C121.98 0 60.99 0 31.03 0H0Z"
+                                            fill="white" />
+                                    </svg>
+                                    <!--Get started image-->
+                                    <img src="img/960x640/2.jpg" class="img-fluid" alt="">
+                                </div>
+                                <div class="px-4 bg-white position-relative pb-5 pt-4">
+                                    <h5 class="mb-4">Get started today</h5>
+
+                                    <!--Signup form-->
+                                    <form>
+                                        
+                                        <div class="d-grid">
+                                            <a type="button" href="/signup" class="btn btn-primary rounded-pill hover-shadow btn-hover-arrow hover-lift"><span>Sign Up</span></a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 order-lg-last position-relative">
+                            <!--Subtitle-->
+                            <div class="d-flex align-items-center mb-3" data-aos="fade-up">
+                                <div class="border-top border-warning width-3x border-2"></div>
+                                <h6 class="mb-0 ms-3 text-muted">The process</h6>
+                            </div>
+                            <h2 class="display-5 me-lg-n9 mb-4" data-aos="fade-down">How does Birdr work?</h2>
+                            <p class="w-lg-75 mb-5" data-aos="fade-down" data-aos-delay="100">Start birdwatching
+                                for free today
+                            </p>
+                            <ul class="step mx-3 mx-sm-0 list-unstyled mb-0">
+                                <li class="step-item" data-aos="fade-up">
+                                    <div class="step-row">
+                                        <span class="step-icon bg-primary bg-opacity-10 text-primary">
+                                            <!--ICON-DOT-->
+                                            <b>01</b>
+                                        </span>
+
+                                        <div class="step-content">
+                                            <h6 class="mb-1">Create an account</h6>
+                                            <p class="mb-0">Create a free account <a href="#">here</a>.</p>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <!--/.step-item-->
+                                <li class="step-item" data-aos="fade-up">
+                                    <div class="step-row">
+                                        <span class="step-icon bg-primary bg-opacity-10 text-primary">
+                                            <!--ICON-DOT-->
+                                            <b>02</b>
+                                        </span>
+
+                                        <div class="step-content">
+                                            <h6 class="mb-1">Check your map</h6>
+                                            <p class="mb-0">Log, view, and search for birds from the map page</p>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <!--/.step-item-->
+                                <li class="step-item mb-0" data-aos="fade-up">
+                                    <div class="step-row">
+                                        <span class="step-icon bg-primary bg-opacity-10 text-primary">
+                                            <!--ICON-DOT-->
+                                            <b>03</b>
+                                        </span>
+
+                                        <div class="step-content">
+                                            <h6 class="mb-1">
+                                                See your journey</h6>
+                                            <p class="mb-0">Visit your profile to track your progress</p>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <!--/.step-item-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--end: features image section-->
+
+
+            <!--begin: Testimonial section-->
+            <section class="position-relative bg-primary text-white overflow-hidden">
+                <!--begin: Divider shape-->
+                <svg class="position-absolute start-0 top-0 text-white" width="100%" height="48"
+                    preserveAspectRatio="none" viewBox="0 0 1284 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0 0L31.03 14.5833C60.99 29.1667 121.98 58.3333 182.97 62.5C245.03 66.6667 306.02 45.8333 367.01 35.4167C428 25 488.99 25 549.98 37.5C610.97 50 673.03 75 734.02 70.8333C795.01 66.6667 856 33.3333 916.99 31.25C977.98 29.1667 1038.97 58.3333 1101.03 75C1162.02 91.6667 1223.01 95.8333 1252.97 97.9167L1284 100V0H1252.97C1223.01 0 1162.02 0 1101.03 0C1038.97 0 977.98 0 916.99 0C856 0 795.01 0 734.02 0C673.03 0 610.97 0 549.98 0C488.99 0 428 0 367.01 0C306.02 0 245.03 0 182.97 0C121.98 0 60.99 0 31.03 0H0Z"
+                        fill="currentColor"></path>
+                </svg>
+                <!--end: Divider shape-->
+
+            <!--begin: News section-->
+            {{>newsSection}}
+            <!--ends: News section-->
+        </main>
+
+{{> footer-3 }}
+{{>scroller}}
+

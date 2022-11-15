@@ -1,0 +1,75 @@
+{{#extend "scripts"}}
+{{/extend}}
+{{#extend "stylesheets"}}
+{{/extend}}
+{{> preloader}}
+{{> navbar }}
+
+
+<main class="main-content" id="main-content">
+    <section class="position-relative bg-white border-bottom">
+        <div class="container position-relative py-9">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    {{>profilebreadcrumb}}
+                </div>
+            </div>
+            <!--/.row-->
+
+        </div>
+    </section>
+    <section class="position-relative">
+        <div class="container position-relative">
+            <div class="">
+
+                <!--Profile info header-->
+                <div class="position-relative pt-9 pb-9 pb-lg-11">
+                    <div class="row">
+                        <div class="col-lg-3 mb-5 mb-lg-0">
+                            <div class="mt-lg-n14 position-relative z-index-1">
+                                <div class="card shadow p-3">
+                                    <div>
+                                        <!--profile image-->
+                                        <div class="width-15x height-15x mb-5 rounded-circle shadow bg-no-repat overflow-hidden bg-contain"
+                                            style="background-image: url({{userNav.picture}});">
+                                        </div>
+                                        <h4 class="mb-2">{{userNav.givenName}} {{userNav.fullName}}</h4>
+                                        <small class="d-block mb-3"></small>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="d-flex flex-column">
+                               {{>profilemenu}}
+
+                                <div class="h-100">
+                                    <h5 class="mb-4">Profile Details</h5>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Name</label>
+                                            <div class="form-control">{{userNav.givenName}} {{userNav.familyName}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Email address</label>
+                                            <div class="form-control">{{userNav.email}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+       
+{{> footer-3 }}
+{{>scroller}}
+
+        
