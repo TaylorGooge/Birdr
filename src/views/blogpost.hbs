@@ -13,17 +13,19 @@
                 <div class="col-lg-10 col-xl-8">
                     <div class="position-relative pb-3 pb-lg-0">
                         <div class="d-flex align-items-center w-100">
-                            <a href="#!" class="badge bg-primary rounded-pill me-3">{{this.attributes.tag}}</a>
+                            {{#each this.attributes.blog_tag }}
+                            <a href="#!" class="badge bg-primary rounded-pill me-3"> {{this.attributes.tag}}</a>   
+                            {{/each}}
                             <small class="text-muted">{{formatDate this.attributes.publishDate}}</small>
                         </div>
                         <div>
                             <h2 class="my-4 display-3">
                                 {{this.attributes.articleTitle}}
                             </h2>
-                            {{#each this.attributes.admin_user}}
+                            {{#each this.attributes.author}}
                             {{#if this.attributes.firstname}}
                             <div class="d-flex pt-2 mb-0 small align-items-center">
-                                {{!-- <img src="" alt="" class="width-3x height-3x rounded-circle me-2"> --}}
+                                <img src="http://localhost:1337{{this.attributes.authorimage.data.attributes.url}}" onerror="this.onerror=null;this.src='https://birdr-app.s3.amazonaws.com/public/profileFallback.png';" alt="" class="width-3x height-3x rounded-circle me-2">
                                 <span class="text-muted d-inline-block">By <a href="#!"
                                         class="text-dark">{{this.attributes.firstname}} {{this.attributes.lastname}}</a></span>
                             </div>
@@ -47,7 +49,6 @@
         <div class="container pb-9 pb-lg-11">
             {{#each this.attributes.mainPhoto.data}}
             <img src="http://localhost:1337{{this.attributes.url}}" alt=""class="img-fluid shadow-lg rounded-4 mb-7 mb-lg-9 position-relative mt-n14">
-            http://localhost:1337{{this.attributes.url}}
             {{/each}}
             <div class="row">
                 <div class="col-xl-9 mx-auto">
@@ -64,7 +65,6 @@
 {{>footer-3}}
 {{>scroller}}
 <script>
-
     function addClass(selector, className){
     selector.forEach((el) => {
         if (className.length > 1) {
@@ -78,7 +78,7 @@
     });
 
     }
-   addEventListener('load', (event) => {
+    addEventListener('load', (event) => {
     let post = document.getElementById('mainContent')
 
     let firstP= post.querySelectorAll('p:nth-child(1)')

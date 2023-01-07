@@ -1,0 +1,76 @@
+{{#extend "scripts"}}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+{{/extend}}
+{{#extend "stylesheets"}}
+<link rel="stylesheet" href="vendor/css/simplebar.min.css">
+    <!--Main style-->
+{{/extend}}
+
+{{> preloader }}
+{{> navbar }}
+<main class="main-content" id="main-content">
+    <section>
+        {{> hero tagline="Birdr Data Dashboard" product="Here you'll find visualizations based on data collected from Birdr" link_text="Get Started with Birdr"}}
+    </section>
+    <section>
+        {{> chartdonut title="Top 10 Frequently Sighted Birds- By English Name"}}
+        {{> chartdonut title= "Top 10 Frequently Sighted Birds- By Functional Group"}}
+    </section>
+    <section>
+        {{> chartMap }}
+    </section>
+    <section>
+        {{> chartAbout}}
+    </section>
+
+    
+</main>
+{{> footer-3 }}
+{{>scroller}}
+
+<script>
+          //Chart Pie
+        var optionsPie = {
+            colors: ["fffff", "CABDAF", "CCCCC"],
+            series: [44, 55, 13],
+            chart: {
+            type: 'donut',
+            fontFamily: 'inherit',
+
+            },
+            labels: ['Facebook', 'Twitter', 'Instagram'],
+            plotOptions: {
+            pie: {
+                expandOnClick: false,
+                size: 200,
+                donut: {
+                size: '65%'
+                }
+            }
+            },
+            dataLabels: {
+            enabled: false,
+            dropShadow: {
+                enabled: false
+            }
+            },
+            legend: {
+            show: false
+            },
+            tooltip: {
+            y: {
+                formatter: function (val) {
+                return val + '<span class="fw-normal small">K Followers</span>';
+                },
+            },
+            },
+        };
+        
+</script>
+<script>
+    addEventListener('load', (event) => {
+        var chartPie = new ApexCharts(document.querySelector("#chart_pie"), optionsPie);
+        chartPie.render();
+
+    })
+</script>

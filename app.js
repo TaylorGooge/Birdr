@@ -51,6 +51,7 @@ function getUser(req) {
     lastLogin: req.oidc.isAuthenticated() ? req.oidc.user.last_login : false,
   };
 }
+
 ///markdown processing
 function toHTML(text){
   var showdown  = require('showdown'),
@@ -117,7 +118,7 @@ app.get('/', function(req, res, next) {
  
 });
 
-app.get('/map', function(req, res, next) {
+app.get('/map', requiresAuth(), function(req, res, next) {
   user = getUser(req);
   if (user.email) {
     axios.get(`${process.env.baseURL}/getloggedAll`)
@@ -128,7 +129,7 @@ app.get('/map', function(req, res, next) {
 });
 
 app.get('/blogpost', function(req, res, next) {
-    axios.get(`http://localhost:1337/api/blogs/${req.query.id}?&populate=*`, {
+    axios.get(`http://localhost:1337/api/blogs/${req.query.id}?&populate=deep`, {
       headers: {
         Authorization:
           `Bearer ${process.env.strapiTestEnv}`,
@@ -153,7 +154,7 @@ app.get('/support', function(req, res, next) {
 });
 
 app.get('/dashboard', function(req, res, next) {
-  res.render('comingsoon', { userNav: getUser(req), active: { dashboard: true }});
+  res.render('dashboard', { userNav: getUser(req), active: { dashboard: true }});
 });
 
 app.get('/profile', function(req, res, next) {
@@ -164,16 +165,33 @@ app.get('/about', function(req, res, next) {
   res.render('about', { userNav: getUser(req), active: { about: true }});
 });
 
-app.get('/page-profile-settings', requiresAuth(),  function(req, res, next) {
-  res.render('page-profile-settings', {active: { settings: true, profile: true }, userNav: getUser(req)});
-}); 
+// app.get('/page-profile-settings', requiresAuth(),  function(req, res, next) {
+//   res.render('page-profile-settings', {active: { settings: true, profile: true }, userNav: getUser(req)});
+// }); 
 
 app.get('/help', function(req, res, next) {
-  res.render('help', { active: { help: true }, userNav: getUser(req) });
+  axios.get(`http://localhost:1337/api/faqs?&populate=*`, {
+      headers: {
+        Authorization:
+          `Bearer ${process.env.strapiTestEnv}`,
+      },
+    })
+    .then((res1) => {
+      let faqs= res1.data.data
+      for (let i=0; i< faqs.length; i++){
+        let answer= faqs[i].attributes.Answer
+        answer = toHTML(answer);
+        faqs[i].attributes.Answer= answer
+      }
+      res.render('help', { active: { help: true }, faq: {faqs}, userNav: getUser(req) });
+    })
+    .catch((error) => {
+      res.render('error404');
+      console.log(error);
+    })
 });
-
 app.get('/blog', function(req, res, next) {
-  axios.get('http://localhost:1337/api/blogs?pagination[page]=1&pagination[pageSize]=10&populate=*', {
+  axios.get('http://localhost:1337/api/blogs?pagination[page]=1&pagination[pageSize]=10&&populate=deep', {
     headers: {
       Authorization:
         `Bearer ${process.env.strapiTestEnv}`,
@@ -181,6 +199,9 @@ app.get('/blog', function(req, res, next) {
   })
   .then((res1) => {
     let posts = res1.data.data
+    for (let i=0; i < posts.length ; i++){
+      console.log(posts[1].attributes.author.data.attributes.authorimage.data.attributes.url);
+    }
     let pagination = res1.data.meta
     res.render('blog', { blog: {posts}, pagination: {pagination}, userNav: getUser(req)})
   })
@@ -194,17 +215,17 @@ app.get('/tracking-history',  function(req, res, next) {
   res.render('tracking-history', { userNav: getUser(req), active: { tracking: true , profile: true}});
 });
 
-app.get('/signup',  function(req, res, next) {
-  res.render('signup', { userNav: getUser(req) });
-});
+// app.get('/signup',  function(req, res, next) {
+//   res.render('signup', { userNav: getUser(req) });
+// });
 
-app.get('/signin', function(req, res, next) {
-  res.render('signin', { userNav: getUser(req) });
-});
+// app.get('/signin', function(req, res, next) {
+//   res.render('signin', { userNav: getUser(req) });
+// });
 
-app.get('/resetpassword', function(req, res, next) {
-  res.render('resetpassword', { userNav: getUser(req) });
-});
+// app.get('/resetpassword', function(req, res, next) {
+//   res.render('resetpassword', { userNav: getUser(req) });
+// });
 
 app.get('*', function(req, res){
   res.render('error404')

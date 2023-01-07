@@ -1,0 +1,15 @@
+<div class="col-lg-8 col-xl-7 mx-auto">
+    <h2 data-aos="fade-up">FAQ</h2>
+    {{#each faq}}
+    {{#each this}}
+    <div data-aos="fade-up" class="width-7x border-top border-2 border-primary mb-5"></div>
+    <!--Faq box-->
+    <div class="p-4 mb-3 border rounded-3 bg-white" data-aos="fade-up">
+        <h5 class="mb-3">{{this.attributes.Question}}</h5>
+        <p class="mb-0">
+            {{{this.attributes.Answer}}}
+        </p>
+    </div> 
+    {{/each}}
+    {{/each}}            
+</div>

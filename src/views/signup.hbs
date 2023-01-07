@@ -1,4 +1,5 @@
 {{#extend "scripts"}}
+ <script src="js/signup.js"></script>
 {{/extend}}
 {{#extend "stylesheets"}}
 {{/extend}}
@@ -22,17 +23,25 @@
                     </p>
                     <div class="position-relative">
                         <div>
-                            <form class="needs-validation" novalidate>
-
+                            <form class="needs-validation" novalidate onsubmit="submitForm(event)">
+                                <div class="input-icon-group mb-3">
+                                    <input type="text" class="form-control"  name ="signUpUserName" id="signUpUserName" autofocus
+                                        placeholder="Your first name">
+                                </div>
                                 <!--input-with-icon-->
                                 <div class="input-icon-group mb-3">
                                     <span class="input-icon">
                                         <i class="bx bx-user"></i>
                                     </span>
-                                    <input type="text" class="form-control" required id="signUpNameFirst" autofocus
+                                    <input type="text" class="form-control"  name="signUpNameFirst" id="signUpNameFirst" autofocus
                                         placeholder="Your first name">
-                                    <input type="text" class="form-control" required id="signUpNameLast" autofocus
-                                placeholder="Your last name">
+                                </div>
+                                <div class="input-icon-group mb-3">
+                                    <span class="input-icon">
+                                        <i class="bx bx-user"></i>
+                                    </span>
+                                    <input type="text" class="form-control"  name= "signUpNameLast" id="signUpNameLast" autofocus
+                                        placeholder="Your last name">
                                 </div>
 
                                 <!--input-with-icon-->
@@ -41,7 +50,7 @@
                                         <i class="bx bx-envelope"></i>
                                     </span>
                                     </span>
-                                    <input type="email" class="form-control" required id="signUpMail"
+                                    <input type="email" class="form-control"  name="signUpMail" id="signUpMail"
                                         placeholder="Your email address">
                                 </div>
                                 <!--input-with-icon-->
@@ -50,7 +59,7 @@
                                         <i class="bx bx-lock-open"></i>
                                     </span>
                                     </span>
-                                    <input type="password" class="form-control" required id="signUpPassword"
+                                    <input type="password" class="form-control"  name="signUpPassword" id="signUpPassword"
                                         placeholder="Enter password">
                                 </div>
                                 <!--input-with-icon-->
@@ -59,11 +68,11 @@
                                         <i class="bx bx-lock-open"></i>
                                     </span>
                                     </span>
-                                    <input type="password" class="form-control" required id="signUpConfirmPassword"
+                                    <input type="password" class="form-control"  id="signUpConfirmPassword"
                                         placeholder="Confirm password">
                                 </div>
                                 <div class="d-grid">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary"  id="signupbutton">
                                         Sign Up
                                     </button>
                                 </div>

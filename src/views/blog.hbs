@@ -43,11 +43,11 @@
                             </h2>
                             <div class="d-flex mb-0 align-items-center pt-4">
                                 <div class="position-relative me-2">
+                                    {{#each this.attributes.author}}
                                     <!--Avatar Image-->
                                     <img class="position-relative avatar sm rounded-circle"
-                                        src="img/team/3.jpg" alt="">
-                                </div>
-                                {{#each this.attributes.admin_user}}
+                                        src="http://localhost:1337{{this.attributes.authorimage.data.attributes.url}}" onerror="this.onerror=null;this.src='https://birdr-app.s3.amazonaws.com/public/profileFallback.png';" alt="">
+                                </div>                          
                                 <span class="text-muted d-inline-block small">By <a href="#!"
                                         class="text-dark">{{this.attributes.firstname}} {{this.attributes.lastname}}</a></span>
                                 {{/each}}

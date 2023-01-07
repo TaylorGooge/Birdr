@@ -16,43 +16,7 @@
         <main class="main-content" id="main-content">
 
             <!--begin: Hero background slide section-->
-            <section class="position-relative">
-                <div class="container-fluid position-relative z-index-1">
-                    <div class="position-relative rounded-4 overflow-hidden bg-dark">
-                        <!-- Slider main container -->
-                        <div class="swiper-main rounded-4 overflow-hidden position-absolute start-0 top-0 w-100 h-100 mb-0">
-                            <!-- Additional required wrapper -->
-                            <div class="swiper-wrapper rounded-5">
-                                <!-- Slides -->
-                                <div class="swiper-slide bg-cover bg-center bg-no-repeat"
-                                    style="background-image: url(img/backgrounds/homeHero.png);"></div>
-                            </div>
-                        </div>
-                        <div class="position-relative text-white w-md-75 px-4 w-lg-60 mx-auto text-center z-index-1 py-12 py-lg-15">
-                            <!--Hero title-->
-                            <h1 class="display-1 mb-3 mb-md-4 position-relative">Your instinct is calling
-                            </h1>
-
-                            <!--Hero text-->
-                            <p class="lead w-lg-60 mx-auto mb-5">Birdr</p>
-
-                            <!--Hero buttons-->
-                            <div class="d-flex flex-column">
-                                <div>
-                                    <a href="#features" class="btn btn-primary btn-lg">
-                                        Get Started
-                                    </a>
-                                </div>
-                                <div class="pt-3 small">✌️ Get started for free.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/.row-->
-                </div>
-
-
-            </section>
-            <!--end: Hero background slide section-->
+            {{>hero tagline="Your instinct is calling" product= "Birdr" link_text="Get Started" smallNote="✌️ Get started for free." img='img/backgrounds/homeHero.png'}}
 
             <!--begin: features icon section-->
             <section id="features" class="overflow-hidden position-relative">
@@ -223,7 +187,7 @@
                                             fill="white" />
                                     </svg>
                                     <!--Get started image-->
-                                    <img src="img/960x640/2.jpg" class="img-fluid" alt="">
+                                    <img src="img/pexels-tina-nord-792416.jpg" class="img-fluid" alt="">
                                 </div>
                                 <div class="px-4 bg-white position-relative pb-5 pt-4">
                                     <h5 class="mb-4">Get started today</h5>
@@ -232,7 +196,7 @@
                                     <form>
                                         
                                         <div class="d-grid">
-                                            <a type="button" href="/signup" class="btn btn-primary rounded-pill hover-shadow btn-hover-arrow hover-lift"><span>Sign Up</span></a>
+                                            <a type="button" href="/login" class="btn btn-primary rounded-pill hover-shadow btn-hover-arrow hover-lift"><span>Sign Up</span></a>
                                         </div>
                                     </form>
                                 </div>
