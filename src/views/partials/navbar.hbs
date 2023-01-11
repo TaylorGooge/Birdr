@@ -16,7 +16,7 @@
                     <div class="nav-item me-3 me-lg-0 dropdown">
                         <a href="#" class="btn btn-secondary rounded-pill py-0 ps-0 pe-3"
                             data-bs-auto-close="outside" data-bs-toggle="dropdown">
-                            <img src="{{userNav.picture}}" alt="" class="avatar sm rounded-circle me-1">
+                            <img src="{{userNav.picture}}" alt="" class="avatar sm rounded-circle me-1" onerror="this.onerror=null;this.src='https://birdr-app.s3.amazonaws.com/public/profileFallback.png';"/>
                             <small>{{userNav.givenName}}</small>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs p-0">
@@ -24,7 +24,7 @@
                                 <div class="d-flex align-items-center">
                                     <div>
                                         <img src="{{userNav.picture}}" alt=""
-                                            class="avatar xl rounded-pill me-3">
+                                            class="avatar xl rounded-pill me-3" onerror="this.onerror=null;this.src='https://birdr-app.s3.amazonaws.com/public/profileFallback.png';" />
                                     </div>
                                     <div>
                                         <h5 class="mb-0">{{userNav.givenName}} {{userNav.familyName}}</h5>
