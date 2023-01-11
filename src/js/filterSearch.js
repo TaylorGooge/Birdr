@@ -8,7 +8,7 @@ $(document).ready(function() {
   })
       .then((response) => {
         if (!response.ok) {
-          return $('#errorModal').modal('show');
+          return document.getElementById("errorButton").click();
         }
         response.json().then((data) => {
           if (data.length > 0 ) {
@@ -32,11 +32,19 @@ window.addEventListener('load', () => {
   // eslint-disable-next-line max-len
   document.getElementById('search-submitBird').addEventListener('click', function(e) {
     e.preventDefault();
-    if (document.getElementById('functionalGroup').value == '0' && document.getElementById('speciesSearch').value == '0' ) {
-      return $('#errorModal').modal('show');
+    if (document.getElementById('functionalGroup').value == 0 && document.getElementById('speciesSearch').value == 0 ) {
+      return document.getElementById("errorButton").click();
     }
     searchBird();
   });
+  document.getElementById('search-submitBird-1').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (document.getElementById('functionalGroup').value == 0 && document.getElementById('speciesSearch').value == 0 ) {
+      return document.getElementById("errorButton").click();
+    }
+    searchBird();
+  });
+
 });
 
 function searchBird() {
@@ -56,21 +64,20 @@ function searchBird() {
   })
       .then((response) => {
         if (!response.ok) {
-          return $('#errorModal').modal('show');
+          return document.getElementById("errorButton").click();
         }
         response.json().then((data) => {
           if (data.length == 0 ) {
-            return $('#searchNoResults').modal('show');
+            return document.getElementById("noResultsButton").click();
           }
           const geoData2 = toGeoJson(data);
           // clear map and form
+          document.getElementById('functionalGroup').value = 0
+          document.getElementById('speciesSearch').value = 0
           clearMap();
-          $('#searchForm').get(0).reset();
           // set new map markers
           setMap(geoData2);
           geoData = geoData2;
-          // reset slider
-          resetSliderVal();
         });
       });
 }

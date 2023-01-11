@@ -1,6 +1,7 @@
 <!-- hidden modal buttons -->
 <a href="#successModal" id = 'successButton' data-bs-toggle="modal" aria-expanded="false" class="invisible"></a>
-<a href="#errorBirdModal" id="errorButton" data-bs-toggle="modal" aria-expanded="false" class="invisible"></a>
+<a href="#errorModal" id="errorButton" data-bs-toggle="modal" aria-expanded="false" class="invisible"></a>
+<a href="#noResultsModal" id="noResultsButton" data-bs-toggle="modal" aria-expanded="false" class="invisible"></a>
 <!--Success Modal -->
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModal" aria-hidden="true" data-backdrop= 'static' >
     <div class="modal-dialog">
@@ -23,7 +24,6 @@
             <div class="modal-footer bg-light border-0">
                 <button type="button" class="btn btn-gray-200 btn-sm"
                     data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary btn-sm">Save changes</button>
             </div>
         </div>
     </div>
@@ -51,7 +51,6 @@
             <div class="modal-footer bg-light border-0">
                 <button type="button" class="btn btn-gray-200 btn-sm"
                     data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary btn-sm">Save changes</button>
             </div>
         </div>
     </div>
@@ -107,6 +106,32 @@ The first set contains four-letter codes based on English names while the second
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--No Results -->
+<div class="modal fade" id="noResultsModal" tabindex="-1" aria-labelledby="successModal" aria-hidden="true" data-backdrop= 'static' >
+    <div class="modal-dialog">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0 bg-light">
+                <h5 class="modal-title">No Matches</h5>
+                <!--Close button-->
+                <button type="button"
+                    class="btn btn-outline-secondary p-0 border-2 width-3x height-3x rounded-circle flex-center z-index-1"
+                    data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bx bx-x fs-5"></i>
+                </button>
+            </div>
+            <div class="modal-body py-5 border-0">
+                <p>
+                    We couldn't find any search results that match the search criteria
+                </p>
+               
+            </div>
+            <div class="modal-footer bg-light border-0">
+                <button type="button" class="btn btn-gray-200 btn-sm"
+                    data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
