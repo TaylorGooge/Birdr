@@ -28,6 +28,8 @@ const strapiApi = require('./Api/strapiApi');
 
 // ///paths//////
 app.use(express.static(path.join(__dirname + '/src/')));
+app.use(express.static(path.join(__dirname + '/src/img')));
+app.use(express.static(path.join(__dirname + '/src/js')));
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -128,36 +130,36 @@ app.get('/map', requiresAuth(), function(req, res, next) {
   }
 });
 
-app.get('/blogpost', function(req, res, next) {
-    axios.get(`http://localhost:1337/api/blogs/${req.query.id}?&populate=deep`, {
-      headers: {
-        Authorization:
-          `Bearer ${process.env.strapiTestEnv}`,
-      },
-    })
-    .then((res1) => {
-      let posts = res1.data.data
-      let postBody = posts.attributes.postBody
-      postBody = toHTML(postBody);
-      posts.attributes.postBody = postBody
-      res.render('blogpost', { blog: {posts}, userNav: getUser(req)});
-    })
-    .catch((error) => {
-      res.render('error404');
-      console.log(error);
-    })
+// app.get('/blogpost', function(req, res, next) {
+//     axios.get(`http://localhost:1337/api/blogs/${req.query.id}?&populate=deep`, {
+//       headers: {
+//         Authorization:
+//           `Bearer ${process.env.strapiTestEnv}`,
+//       },
+//     })
+//     .then((res1) => {
+//       let posts = res1.data.data
+//       let postBody = posts.attributes.postBody
+//       postBody = toHTML(postBody);
+//       posts.attributes.postBody = postBody
+//       res.render('blogpost', { blog: {posts}, userNav: getUser(req)});
+//     })
+//     .catch((error) => {
+//       res.render('error404');
+//       console.log(error);
+//     })
  
-});
+// });
 
 app.get('/support', function(req, res, next) {
   res.render('support', { userNav: getUser(req), active: { support: true }});
 });
 
-app.get('/dashboard', function(req, res, next) {
-  res.render('dashboard', { userNav: getUser(req), active: { dashboard: true }});
-});
+// app.get('/dashboard', function(req, res, next) {
+//   res.render('dashboard', { userNav: getUser(req), active: { dashboard: true }});
+// });
 
-app.get('/profile', function(req, res, next) {
+app.get('/profile', requiresAuth(), function(req, res, next) {
   res.render('profile', {active: "profile" , userNav: getUser(req)});
 });
 
@@ -169,51 +171,51 @@ app.get('/about', function(req, res, next) {
 //   res.render('page-profile-settings', {active: { settings: true, profile: true }, userNav: getUser(req)});
 // }); 
 
-app.get('/help', function(req, res, next) {
-  axios.get(`http://localhost:1337/api/faqs?&populate=*`, {
-      headers: {
-        Authorization:
-          `Bearer ${process.env.strapiTestEnv}`,
-      },
-    })
-    .then((res1) => {
-      let faqs= res1.data.data
-      for (let i=0; i< faqs.length; i++){
-        let answer= faqs[i].attributes.Answer
-        answer = toHTML(answer);
-        faqs[i].attributes.Answer= answer
-      }
-      res.render('help', { active: { help: true }, faq: {faqs}, userNav: getUser(req) });
-    })
-    .catch((error) => {
-      res.render('error404');
-      console.log(error);
-    })
-});
-app.get('/blog', function(req, res, next) {
-  axios.get('http://localhost:1337/api/blogs?pagination[page]=1&pagination[pageSize]=10&&populate=deep', {
-    headers: {
-      Authorization:
-        `Bearer ${process.env.strapiTestEnv}`,
-    },
-  })
-  .then((res1) => {
-    let posts = res1.data.data
-    for (let i=0; i < posts.length ; i++){
-      console.log(posts[1].attributes.author.data.attributes.authorimage.data.attributes.url);
-    }
-    let pagination = res1.data.meta
-    res.render('blog', { blog: {posts}, pagination: {pagination}, userNav: getUser(req)})
-  })
-  .catch((error) => {
-    res.render('comingsoon')
-    console.log(error);
-  })
-});
+// app.get('/help', function(req, res, next) {
+//   axios.get(`http://localhost:1337/api/faqs?&populate=*`, {
+//       headers: {
+//         Authorization:
+//           `Bearer ${process.env.strapiTestEnv}`,
+//       },
+//     })
+//     .then((res1) => {
+//       let faqs= res1.data.data
+//       for (let i=0; i< faqs.length; i++){
+//         let answer= faqs[i].attributes.Answer
+//         answer = toHTML(answer);
+//         faqs[i].attributes.Answer= answer
+//       }
+//       res.render('help', { active: { help: true }, faq: {faqs}, userNav: getUser(req) });
+//     })
+//     .catch((error) => {
+//       res.render('error404');
+//       console.log(error);
+//     })
+// });
+// app.get('/blog', function(req, res, next) {
+//   axios.get('http://localhost:1337/api/blogs?pagination[page]=1&pagination[pageSize]=10&&populate=deep', {
+//     headers: {
+//       Authorization:
+//         `Bearer ${process.env.strapiTestEnv}`,
+//     },
+//   })
+//   .then((res1) => {
+//     let posts = res1.data.data
+//     for (let i=0; i < posts.length ; i++){
+//       console.log(posts[1].attributes.author.data.attributes.authorimage.data.attributes.url);
+//     }
+//     let pagination = res1.data.meta
+//     res.render('blog', { blog: {posts}, pagination: {pagination}, userNav: getUser(req)})
+//   })
+//   .catch((error) => {
+//     res.render('comingsoon')
+//     console.log(error);
+//   })
+// });
 
-app.get('/tracking-history',  function(req, res, next) {
-  res.render('tracking-history', { userNav: getUser(req), active: { tracking: true , profile: true}});
-});
+// app.get('/tracking-history',  function(req, res, next) {
+//   res.render('tracking-history', { userNav: getUser(req), active: { tracking: true , profile: true}});
+// });
 
 // app.get('/signup',  function(req, res, next) {
 //   res.render('signup', { userNav: getUser(req) });
