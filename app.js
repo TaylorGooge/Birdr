@@ -211,9 +211,9 @@ app.get('/about', function(req, res, next) {
 //   })
 // });
 
-// app.get('/tracking-history',  function(req, res, next) {
-//   res.render('tracking-history', { userNav: getUser(req), active: { tracking: true , profile: true}});
-// });
+app.get('/tracking-history',  function(req, res, next) {
+  res.render('tracking-history', { userNav: getUser(req), active: { tracking: true }});
+});
 
 // app.get('/signup',  function(req, res, next) {
 //   res.render('signup', { userNav: getUser(req) });
