@@ -28,8 +28,6 @@ const strapiApi = require('./Api/strapiApi');
 
 // ///paths//////
 app.use(express.static(path.join(__dirname + '/src/')));
-app.use(express.static(path.join(__dirname + '/src/img')));
-app.use(express.static(path.join(__dirname + '/src/js')));
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
