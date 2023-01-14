@@ -15188,6 +15188,9 @@ header.header-transparent.sticky-fixed.is-fixed .navbar-dark .navbar-fixed-bg {
   max-width: 160px;
   min-width: 160px; }
 
+.swiper-slide {
+  background-image: url('img/backgrounds/birdr.png');
+}
 .swiper-classic {
   height: 440px; }
   .swiper-classic .swiper-slide {

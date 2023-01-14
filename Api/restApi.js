@@ -59,7 +59,6 @@ router.post('/postBird', function(req, res, next) {
           res.status(401).json({error: 'Couldn\'t complete request- issue with birdSighting'});
           throw error;
         }
-        console.log('here')
         return res.status(200).json({error: 'Success'});
       });
     }
@@ -81,7 +80,7 @@ router.get('/searchBird/:id?/:group?', function(req, res, next) {
     res.send(JSON.stringify(results));
   }
   if (req.query.id) {
-    db.query( `SELECT birdcodes.englishName, birdSighting.date, birdUsers.userName, birdSighting.birdID, birdSighting.coordA, 
+    db.query( `SELECT birdcodes.englishName, birdcodes.birdImg, birdcodes.birdCall, birdSighting.date, birdUsers.userName, birdSighting.birdID, birdSighting.coordA, 
                 birdSighting.coordB, birdSighting.id, birdSighting.userID FROM birdcodes 
                 INNER JOIN birdSighting on 
                 birdcodes.birdID = birdSighting.birdID 
@@ -94,7 +93,7 @@ router.get('/searchBird/:id?/:group?', function(req, res, next) {
       res.send(JSON.stringify(results));
     });
   } else {
-    db.query(`SELECT birdcodes.englishName, birdSighting.date, birdUsers.userName, birdSighting.birdID, birdSighting.coordA,
+    db.query(`SELECT birdcodes.englishName, birdcodes.birdImg, birdcodes.birdCall, birdSighting.date, birdUsers.userName, birdSighting.birdID, birdSighting.coordA,
       birdSighting.coordB, birdSighting.id, birdSighting.userID FROM birdcodes
       INNER JOIN birdSighting on 
       birdcodes.birdID = birdSighting.birdID 
@@ -157,7 +156,7 @@ router.get('/getlogged', function(req, res, next) {
 });
 
 router.get('/getloggedAll', function(req, res, next) {
-  db.query( `SELECT birdcodes.englishName, birdSighting.date, birdUsers.userName, birdSighting.birdID, birdSighting.coordA,
+  db.query( `SELECT birdcodes.englishName, birdcodes.birdImg, birdcodes.birdCall, birdSighting.date, birdUsers.userName, birdSighting.birdID, birdSighting.coordA,
               birdSighting.coordB, birdSighting.id, birdSighting.userID FROM birdcodes
               INNER JOIN birdSighting on
               birdcodes.birdID = birdSighting.birdID
@@ -169,6 +168,5 @@ router.get('/getloggedAll', function(req, res, next) {
     res.send(JSON.stringify(results));
   });
 });
-
 
 module.exports = router;

@@ -32,14 +32,28 @@
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
         map.data.addListener('click', function(event) {
             const feat = event.feature;
-            const html = `<div class="card" style="width: 18rem;">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"> <bold>Species: </bold>${feat.getProperty('englishName')}</li>
-                                <li class="list-group-item"><bold>Date: </bold>${feat.getProperty('date').slice(0,10)}</li>
-                                <li class="list-group-item"><bold>Logged By: </bold>${feat.getProperty('userName')}</li>
-                            </ul>
+            if (feat.getProperty('birdImg') !== null && feat.getProperty('birdCall') !== null ){
+                        let html = `<div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"> <bold>Species: </bold>${feat.getProperty('englishName')}</li>
+                            <li class="list-group-item"> <bold>Photo: </bold>${feat.getProperty('birdImg')}</li>
+                            <li class="list-group-item"> <bold>Call: </bold>${feat.getProperty('birdCall')}</li>
+                            <li class="list-group-item"><bold>Date: </bold>${feat.getProperty('date').slice(0,10)}</li>
+                            <li class="list-group-item"><bold>Logged By: </bold>${feat.getProperty('userName')}</li>
+                        </ul>
                         </div>`
-            infoWindow.setContent(html);
+                        infoWindow.setContent(html);
+            } else {
+                let html = `<div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"> <bold>Species: </bold>${feat.getProperty('englishName')}</li>
+                            <li class="list-group-item"><bold>Date: </bold>${feat.getProperty('date').slice(0,10)}</li>
+                            <li class="list-group-item"><bold>Logged By: </bold>${feat.getProperty('userName')}</li>
+                        </ul>
+                        </div>`
+                infoWindow.setContent(html);
+
+            }
             infoWindow.setPosition(event.latLng);
             infoWindow.setOptions({pixelOffset: new google.maps.Size(0, -34)});
             infoWindow.open(map);
