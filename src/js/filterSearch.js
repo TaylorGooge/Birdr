@@ -81,3 +81,28 @@ function searchBird() {
         });
       });
 }
+
+function clearResults(){
+  clearMap();
+
+  fetch('/getloggedall', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+      .then((response) => {
+        if (!response.ok) {
+          return document.getElementById("errorButton").click();
+        }
+        response.json().then((data) => {
+          if (data.length == 0 ) {
+            return document.getElementById("noResultsButton").click();
+          }
+          const geoData2 = toGeoJson(data);
+          // set new map markers
+          setMap(geoData2);
+          geoData = geoData2;
+        });
+      });
+}
